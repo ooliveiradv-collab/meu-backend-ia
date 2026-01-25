@@ -1,3 +1,17 @@
+// Webhook do Mercado Pago
+app.post("/webhook-mercadopago", (req, res) => {
+  try {
+    console.log("Webhook recebido do Mercado Pago");
+    console.log(req.body);
+
+    // Mercado Pago envia vários tipos de evento
+    // Aqui vamos apenas confirmar que chegou
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Erro no webhook:", error);
+    res.sendStatus(500);
+  }
+});
 // Importa o Express
 const express = require("express");
 
