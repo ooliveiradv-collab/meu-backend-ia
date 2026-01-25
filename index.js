@@ -1,4 +1,25 @@
 // Webhook do Mercado Pago
+app.post("/webhook-mercadopago", async (req, res) => {
+  try {
+    const payment = req.body;
+
+    console.log("Webhook recebido:", payment);
+
+    // Verifica se é um pagamento aprovado
+    if (payment.type === "payment" && payment.data?.id) {
+      console.log("Pagamento confirmado:", payment.data.id);
+
+      // Aqui no próximo passo vamos buscar os detalhes
+      // e liberar o plano no Firebase
+    }
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Erro no webhook:", error);
+    res.sendStatus(500);
+  }
+});
+// Webhook do Mercado Pago
 app.post("/webhook-mercadopago", (req, res) => {
   try {
     console.log("Webhook recebido do Mercado Pago");
